@@ -202,12 +202,12 @@ Widget buildHomeTab() {
           time: '4d',
           text: 'this is a text descrription for the following content.',
         ),
+        buildReels(),
         PostWidget(
           accountName: 'Account Name',
           time: '4d',
           text: 'this is a text descrription for the following content.',
         ),
-        buildReels(),
       ],
     ),
   );
