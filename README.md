@@ -37,6 +37,8 @@ A **Flutter-based Facebook clone** featuring:
 
 ## Screenshots
 
-![]()
+![](https://github.com/Etsubdink-Gashaw/facebook/blob/main/Screenshot%202026-01-15%20070754.png)
+![](https://github.com/Etsubdink-Gashaw/facebook/blob/main/Screenshot%202026-01-15%20064227.png)
+![](https://github.com/Etsubdink-Gashaw/facebook/blob/main/Screenshot%202026-01-15%20065926.png)
 
 ---
