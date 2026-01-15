@@ -94,21 +94,38 @@ Widget friendRequest(String name, String number) {
 
 Widget friendSuggestionCard(String name, String mutualFriends) {
   return Card(
-    child: ListTile(
-      leading: const CircleAvatar(radius: 24),
-      title: Text(name),
-      subtitle: Text('$mutualFriends mutual friends'),
-      trailing: SizedBox(
-        width: 300,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton(onPressed: () {}, child: const Text('Add Friend')),
-            SizedBox(width: 8),
-            ElevatedButton(onPressed: () {}, child: const Text('Remove')),
-          ],
-        ),
+    child: Padding(
+      padding: EdgeInsets.all(12),
+      child: Row(
+        children: [
+          CircleAvatar(radius: 28),
+          SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('$mutualFriends mutual friends'),
+                SizedBox(height: 8),
+                Row(
+                  //mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Add Friend'),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Remove'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     ),
   );
