@@ -37,6 +37,6 @@ A **Flutter-based Facebook clone** featuring:
 
 ## Screenshots
 
-*(Add screenshots of the login page, home page, friends page, and tab navigation here)*
+![]()
 
 ---
