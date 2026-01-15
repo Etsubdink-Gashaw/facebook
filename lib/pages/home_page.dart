@@ -1,8 +1,9 @@
+import 'package:facebook/pages/friends_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
+  //final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -15,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 6, vsync: this);
     tabController.addListener(() {
       setState(() {
         currentIndex = tabController.index;
@@ -35,18 +36,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       appBar: AppBar(
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.add, size: 30)),
+          SizedBox(width: 10),
           IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 30)),
+          SizedBox(width: 10),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.notifications, size: 30),
           ),
         ],
         title: Text(
-          widget.title,
-          style: const TextStyle(
-            color: Colors.blueAccent,
+          'facebook',
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
-            fontSize: 24,
           ),
         ),
         bottom: TabBar(
@@ -72,14 +75,21 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
             Tab(
               icon: Icon(
-                Icons.person,
+                Icons.storefront,
                 color: currentIndex == 3 ? Colors.blue : Colors.black,
               ),
             ),
+
             Tab(
               icon: Icon(
                 Icons.notifications,
                 color: currentIndex == 4 ? Colors.blue : Colors.black,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.person,
+                color: currentIndex == 5 ? Colors.blue : Colors.black,
               ),
             ),
           ],
@@ -91,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           buildHomeTab(),
           buildVideosTab(),
           buildFriendsTab(),
+          buildStoreTab(),
           buildProfileTab(),
           buildNotificationsTab(),
         ],
@@ -207,6 +218,10 @@ Widget buildVideosTab() {
 }
 
 Widget buildFriendsTab() {
+  return FriendsPage();
+}
+
+Widget buildStoreTab() {
   return SingleChildScrollView();
 }
 

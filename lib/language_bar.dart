@@ -1,64 +1,73 @@
 import 'package:flutter/material.dart';
 
-class LanguageBar extends StatefulWidget {
-  const LanguageBar({super.key});
+class LanguageBottomSheet extends StatefulWidget {
+  const LanguageBottomSheet({super.key});
 
   @override
-  State<LanguageBar> createState() => _LanguageBarState();
+  State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
 }
 
-class _LanguageBarState extends State<LanguageBar> {
+class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   List<bool> _selected = [true, false, false, false, false];
+
   final List<String> _languages = [
     'English',
     'French',
     'Spanish',
     'Mandarin',
-    'Portugese',
+    'Portuguese',
   ];
+
   void _onCheckboxSelected(int index) {
     setState(() {
-      // Set all items to false
-      _selected = _selected.map((e) => false).toList();
-      // Set the selected item to true
-      _selected[index] = true;
+      _selected = List.generate(_selected.length, (i) => i == index);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Text(
-            'Select your language',
-            style: TextStyle(fontSize: 24),
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(16),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Center(
+              child: SizedBox(
+                width: 40,
+                height: 4,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(2)),
+                  ),
+                ),
+              ),
             ),
-            child: ListView.builder(
+            const SizedBox(height: 16),
+            const Text(
+              'Select your language',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            ListView.builder(
               shrinkWrap: true,
-              itemCount: _selected.length,
+              itemCount: _languages.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(_languages[index]),
                   leading: Checkbox(
                     value: _selected[index],
-                    onChanged: (bool? value) {
-                      _onCheckboxSelected(index); // Handle the selection
-                    },
+                    onChanged: (_) => _onCheckboxSelected(index),
                   ),
+                  onTap: () => _onCheckboxSelected(index),
                 );
               },
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }
